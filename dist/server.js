@@ -12,7 +12,7 @@ const mongodb_1 = require("./database/mongodb");
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)({
-    origin: 'http://localhost:5173',
+    origin: 'https://guileless-bubblegum-0c40b9.netlify.app/',
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type'],
     credentials: true

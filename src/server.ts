@@ -9,7 +9,7 @@ import cookieParser from 'cookie-parser';
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://guileless-bubblegum-0c40b9.netlify.app/',
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type'],
     credentials: true
