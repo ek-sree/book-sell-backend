@@ -4,10 +4,11 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon --exec ts-node src/server.ts",
-    "build": "tsc",
-    "dev": "node dist/server.js"
-  },
+  "start": "node dist/server.js",
+  "build": "tsc",
+  "dev": "nodemon --exec ts-node src/server.ts"
+},
+
   "keywords": [],
   "author": "",
   "license": "ISC",
