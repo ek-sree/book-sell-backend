@@ -8,7 +8,6 @@ const authUsecase_1 = __importDefault(require("../use-case/authUsecase"));
 class AuthController {
     constructor() {
         this.signup = async (req, res) => {
-            var _a;
             try {
                 console.log(req.body);
                 const { name, email, password } = req.body;
@@ -24,7 +23,7 @@ class AuthController {
                         secure: true,
                         maxAge: 3600000
                     });
-                    res.cookie('otp', (_a = response.data) === null || _a === void 0 ? void 0 : _a.otp, {
+                    res.cookie('otp', response.data?.otp, {
                         httpOnly: true,
                         secure: true,
                         maxAge: 60000
@@ -38,7 +37,6 @@ class AuthController {
             }
         };
         this.OtpVerify = async (req, res) => {
-            var _a;
             try {
                 const { otp: enteredOtp } = req.body;
                 const otpFromCookie = Number(req.cookies.otp);
@@ -52,7 +50,7 @@ class AuthController {
                     return;
                 }
                 const response = await this.authUseCase.verifyOtp(enteredOtp, otpFromCookie, userData);
-                if ((_a = response.data) === null || _a === void 0 ? void 0 : _a.token) {
+                if (response.data?.token) {
                     res.cookie('token', response.data.token, {
                         httpOnly: true,
                         secure: true,
@@ -71,12 +69,11 @@ class AuthController {
             }
         };
         this.resendOtp = async (req, res) => {
-            var _a;
             try {
                 const { email } = req.cookies.userData;
                 console.log("resend", email);
                 const response = await this.authUseCase.resendOtp(email);
-                res.cookie('otp', (_a = response.data) === null || _a === void 0 ? void 0 : _a.otp, {
+                res.cookie('otp', response.data?.otp, {
                     httpOnly: true,
                     secure: true,
                     maxAge: 60000
@@ -89,7 +86,6 @@ class AuthController {
             }
         };
         this.login = async (req, res) => {
-            var _a;
             try {
                 const { email, password } = req.body;
                 if (!email || !password) {
@@ -97,7 +93,7 @@ class AuthController {
                     return;
                 }
                 const response = await this.authUseCase.login(email, password);
-                if ((_a = response.data) === null || _a === void 0 ? void 0 : _a.token) {
+                if (response.data?.token) {
                     res.cookie('token', response.data.token, {
                         httpOnly: true,
                         secure: true,

@@ -25,7 +25,10 @@ class AuthRepository {
                 if (data.password) {
                     pass = await (0, haspPassword_1.hashPassword)(data.password);
                 }
-                const newUser = new userModel_1.default(Object.assign(Object.assign({}, data), { password: pass }));
+                const newUser = new userModel_1.default({
+                    ...data,
+                    password: pass,
+                });
                 const savedUser = await newUser.save();
                 console.log("data save????????");
                 return savedUser ? savedUser : null;

@@ -9,7 +9,10 @@ class BookRepository {
         this.addBook = async (data) => {
             try {
                 const book = await bookModel_1.default.create(data);
-                return Object.assign(Object.assign({}, book.toObject()), { userId: book.userId.toString() });
+                return {
+                    ...book.toObject(),
+                    userId: book.userId.toString(),
+                };
             }
             catch (error) {
                 console.log("Error saving book data in repo", error);
