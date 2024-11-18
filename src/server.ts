@@ -9,11 +9,12 @@ import cookieParser from 'cookie-parser';
 const app = express();
 
 app.use(cors({
-    origin: 'https://guileless-bubblegum-0c40b9.netlify.app/',
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type'],
-    credentials: true
-  }));
+  origin: 'https://guileless-bubblegum-0c40b9.netlify.app', 
+  methods: ['GET', 'POST', 'DELETE'], 
+  allowedHeaders: ['Content-Type', 'Authorization'], 
+  credentials: true 
+}));
+
   
 app.use(express.json());
 app.use(cookieParser()); 
